@@ -412,8 +412,8 @@ class AdminDashboard extends StatelessWidget {
           const SizedBox(width: 8),
           Image.asset(
             'assets/create_course/Design community-pana 1.png',
-            width: 60,
-            height: 60,
+            width: 140,
+            height: 100,
             fit: BoxFit.contain,
           ),
         ],
@@ -609,8 +609,8 @@ class AdminDashboard extends StatelessWidget {
               children: [
                 Image.asset(
                   'assets/todo_list/47718914_9170823 1.png',
-                  width: 70,
-                  height: 70,
+                  width: 150,
+                  height: 150,
                   fit: BoxFit.contain,
                 ),
                 const SizedBox(height: 12),

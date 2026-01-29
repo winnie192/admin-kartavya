@@ -38247,7 +38247,7 @@ return A.eI(!1,r,!0,A.I(s,A.H(A.a([A.rt(b,B.dr,36,36),B.aq,A.D(a,s,s,s,B.Wz,s,s)
 wa(a,b,c,d){var s=null,r=a.b9(0.08),q=A.F(10),p=A.rt(d,B.dr,28,28),o=A.D(b,s,s,s,B.mF,s,s),n=a.b9(0.15),m=A.F(6)
 return new A.ay(B.i5,A.I(s,A.H(A.a([p,B.aq,o,B.Y,A.I(s,A.D(c,s,s,s,A.bJ(s,s,a,s,s,s,s,s,s,s,s,11,s,s,B.aS,s,s,!0,s,s,s,s,s,s,s,s),s,s),B.i,s,s,new A.N(n,s,s,m,s,s,B.n),s,s,s,B.oF,s,s,s)],t.p),B.f,B.c,B.d),B.i,s,s,new A.N(r,s,new A.cH(B.q,B.q,B.q,new A.aN(a,3,B.r,-1)),q,s,s,B.n),s,s,s,B.i6,s,s,s),s)},
 a2_(a){var s=null,r=A.F(12),q=A.a([new A.aG(0,B.A,B.af,B.k,4)],t.V),p=t.p
-return A.I(s,A.H(A.a([A.ae(A.X(A.a([B.a_I,B.ah,B.a_7,B.X,A.dZ(!1,B.BI,s,s,s,s,s,s,new A.Ww(a),s,A.cJ(s,s,B.o,s,s,s,0,s,s,B.j,s,s,B.cL,s,new A.aY(A.F(6),B.q),s,s,s,s,s))],p),B.u,B.c,B.d),1),B.a_,A.rt("assets/create_course/Design community-pana 1.png",B.dr,60,60)],p),B.f,B.c,B.d),B.i,s,s,new A.N(B.j,s,s,r,q,s,B.n),s,s,s,B.bc,s,s,s)},
+return A.I(s,A.H(A.a([A.ae(A.X(A.a([B.a_I,B.ah,B.a_7,B.X,A.dZ(!1,B.BI,s,s,s,s,s,s,new A.Ww(a),s,A.cJ(s,s,B.o,s,s,s,0,s,s,B.j,s,s,B.cL,s,new A.aY(A.F(6),B.q),s,s,s,s,s))],p),B.u,B.c,B.d),1),B.a_,A.rt("assets/create_course/Design community-pana 1.png",B.dr,100,140)],p),B.f,B.c,B.d),B.i,s,s,new A.N(B.j,s,s,r,q,s,B.n),s,s,s,B.bc,s,s,s)},
 a2x(){var s=this,r=null,q="18 Jan 2025",p="JavaScript the advance level for pro coders by kartavya Healtheon",o="Rahul Verma",n="Ganesh Anandraj",m="04hrs:52m",l=t.p
 return s.r2(A.X(A.a([A.H(A.a([s.rK("Recent view courses"),B.Y,A.iA(!1,B.ZY,r,r,r,r,r,r,new A.Wz(),r,A.mR(r,r,r,r,r,r,r,r,r,r,r,B.J,B.ap,r,r,r,r,B.ce,r,r))],l),B.f,B.c,B.d),B.X,A.H(A.a([A.ae(s.Lf(o,B.o,q,m,B.pm,123,3,p,n),1),B.b6,A.ae(s.Lf(o,B.o,q,m,B.pm,123,3,p,n),1)],l),B.f,B.c,B.d)],l),B.u,B.c,B.d))},
 Lf(a,b,c,d,e,f,g,h,i){var s=this,r=null,q=A.F(10),p=A.bj(B.H,B.r,1),o=b.b9(0.12),n=t.p
@@ -38257,7 +38257,7 @@ return A.H(A.a([A.db(a,B.U,s,11),B.b_,A.D(b,s,s,s,B.a1,s,s)],t.p),B.f,B.c,B.d)},
 CQ(a,b){var s=null
 return A.H(A.a([A.db(a,B.U,s,10),B.e_,A.D(b,s,s,s,B.d1,s,s)],t.p),B.f,B.c,B.aw)},
 a1t(){var s=null,r=t.p
-return this.r2(A.X(A.a([A.H(A.a([this.rK("To Do List"),B.Y,A.iA(!1,B.a0f,s,s,s,s,s,s,new A.WA(),s,A.mR(s,s,s,s,s,s,s,s,s,s,s,B.J,B.ap,s,s,s,s,B.ce,s,s))],r),B.f,B.c,B.d),B.a4,A.d9(A.X(A.a([A.rt("assets/todo_list/47718914_9170823 1.png",B.dr,70,70),B.X,A.dZ(!1,B.Jv,s,s,s,s,s,s,new A.WB(),s,A.cJ(s,s,B.o,s,s,s,0,s,s,s,s,s,B.bC,s,B.hE,s,s,s,s,s))],r),B.f,B.c,B.d),s,s)],r),B.u,B.c,B.d))},
+return this.r2(A.X(A.a([A.H(A.a([this.rK("To Do List"),B.Y,A.iA(!1,B.a0f,s,s,s,s,s,s,new A.WA(),s,A.mR(s,s,s,s,s,s,s,s,s,s,s,B.J,B.ap,s,s,s,s,B.ce,s,s))],r),B.f,B.c,B.d),B.a4,A.d9(A.X(A.a([A.rt("assets/todo_list/47718914_9170823 1.png",B.dr,150,150),B.X,A.dZ(!1,B.Jv,s,s,s,s,s,s,new A.WB(),s,A.cJ(s,s,B.o,s,s,s,0,s,s,s,s,s,B.bC,s,B.hE,s,s,s,s,s))],r),B.f,B.c,B.d),s,s)],r),B.u,B.c,B.d))},
 r2(a){var s=null
 return A.I(s,a,B.i,s,s,new A.N(B.j,s,s,A.F(10),A.a([new A.aG(0,B.A,B.af,B.k,4)],t.V),s,B.n),s,s,s,B.bY,s,s,s)},
 rK(a){var s=null
