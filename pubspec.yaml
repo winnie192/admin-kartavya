@@ -59,6 +59,10 @@ flutter:
 
   assets:
     - assets/images/
+    - assets/exam_creation/
+    - assets/exam_summary/
+    - assets/create_course/
+    - assets/todo_list/
   #   - images/a_dot_burr.jpeg
   #   - images/a_dot_ham.jpeg
 

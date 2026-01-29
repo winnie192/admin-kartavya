@@ -250,10 +250,14 @@ class AdminDashboard extends StatelessWidget {
                 const SizedBox(height: 12),
                 Row(
                   children: [
-                    _smallOutlinedBtn('AI Generated', Icons.auto_awesome,
+                    _imageOutlinedBtn(
+                        'AI Generated',
+                        'assets/exam_creation/10165944 1.png',
                         () => Navigator.pushNamed(context, '/exams')),
                     const SizedBox(width: 6),
-                    _smallOutlinedBtn('Create Manually', Icons.edit,
+                    _imageOutlinedBtn(
+                        'Create Manually',
+                        'assets/exam_creation/image 1.png',
                         () => Navigator.pushNamed(context, '/exams')),
                   ],
                 ),
@@ -261,31 +265,40 @@ class AdminDashboard extends StatelessWidget {
             ),
           ),
           const SizedBox(width: 8),
-          // Illustration placeholder
-          Container(
-            width: 70,
-            height: 70,
-            decoration: BoxDecoration(
-              color: AppColors.primaryBlue.withValues(alpha: 0.12),
-              borderRadius: BorderRadius.circular(12),
-            ),
-            child: const Icon(Icons.quiz, size: 36, color: AppColors.primaryBlue),
+          Image.asset(
+            'assets/exam_creation/Create exam img 1.png',
+            width: 80,
+            height: 80,
+            fit: BoxFit.contain,
           ),
         ],
       ),
     );
   }
 
-  Widget _smallOutlinedBtn(String label, IconData icon, VoidCallback onTap) {
-    return OutlinedButton.icon(
-      onPressed: onTap,
-      icon: Icon(icon, size: 12),
-      label: Text(label, style: const TextStyle(fontSize: 9)),
-      style: OutlinedButton.styleFrom(
-        foregroundColor: AppColors.primaryBlue,
-        side: const BorderSide(color: AppColors.primaryBlue),
-        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(6)),
-        padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
+  Widget _imageOutlinedBtn(
+      String label, String assetPath, VoidCallback onTap) {
+    return InkWell(
+      onTap: onTap,
+      borderRadius: BorderRadius.circular(8),
+      child: Container(
+        padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 8),
+        decoration: BoxDecoration(
+          border: Border.all(color: AppColors.primaryBlue.withValues(alpha: 0.3)),
+          borderRadius: BorderRadius.circular(8),
+          color: Colors.white,
+        ),
+        child: Column(
+          children: [
+            Image.asset(assetPath, width: 50, height: 50, fit: BoxFit.contain),
+            const SizedBox(height: 4),
+            Text(label,
+                style: const TextStyle(
+                    fontSize: 9,
+                    color: AppColors.primaryBlue,
+                    fontWeight: FontWeight.w500)),
+          ],
+        ),
       ),
     );
   }
@@ -297,35 +310,28 @@ class AdminDashboard extends StatelessWidget {
         children: [
           _sectionTitle('Exams Summary'),
           const SizedBox(height: 14),
-          _examSummaryRow(AppColors.primaryBlue, 'Ongoing', '09'),
-          _examSummaryRow(AppColors.green, 'Completed', '143'),
-          _examSummaryRow(AppColors.amber, 'Upcoming', '09'),
+          _examSummaryRow(AppColors.primaryBlue, 'Ongoing', '09',
+              'assets/exam_summary/image 11.png'),
+          _examSummaryRow(AppColors.green, 'Completed', '143',
+              'assets/exam_summary/image 12.png'),
+          _examSummaryRow(AppColors.amber, 'Upcoming', '09',
+              'assets/exam_summary/image 13.png'),
           const Divider(height: 16),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: const [
-              Text('Total Exams',
-                  style: TextStyle(
-                      fontSize: 10,
-                      fontWeight: FontWeight.w600,
-                      color: AppColors.textDark)),
-              Text('143',
-                  style: TextStyle(
-                      fontSize: 14,
-                      fontWeight: FontWeight.bold,
-                      color: AppColors.textDark)),
-            ],
-          ),
+          _examSummaryRow(AppColors.textDark, 'Total Exams', '143',
+              'assets/exam_summary/image 15.png'),
         ],
       ),
     );
   }
 
-  Widget _examSummaryRow(Color color, String label, String value) {
+  Widget _examSummaryRow(
+      Color color, String label, String value, String assetPath) {
     return Padding(
       padding: const EdgeInsets.only(bottom: 8),
       child: Row(
         children: [
+          Image.asset(assetPath, width: 24, height: 24, fit: BoxFit.contain),
+          const SizedBox(width: 8),
           Container(
               width: 8,
               height: 8,
@@ -388,14 +394,11 @@ class AdminDashboard extends StatelessWidget {
             ),
           ),
           const SizedBox(width: 8),
-          Container(
-            width: 70,
-            height: 70,
-            decoration: BoxDecoration(
-              color: AppColors.amber.withValues(alpha: 0.15),
-              borderRadius: BorderRadius.circular(12),
-            ),
-            child: const Icon(Icons.school, size: 36, color: AppColors.amber),
+          Image.asset(
+            'assets/create_course/Design community-pana 1.png',
+            width: 80,
+            height: 80,
+            fit: BoxFit.contain,
           ),
         ],
       ),
@@ -588,15 +591,11 @@ class AdminDashboard extends StatelessWidget {
           Center(
             child: Column(
               children: [
-                Container(
-                  width: 80,
-                  height: 80,
-                  decoration: BoxDecoration(
-                    color: AppColors.lightBlue,
-                    borderRadius: BorderRadius.circular(12),
-                  ),
-                  child: const Icon(Icons.checklist,
-                      size: 40, color: AppColors.primaryBlue),
+                Image.asset(
+                  'assets/todo_list/47718914_9170823 1.png',
+                  width: 100,
+                  height: 100,
+                  fit: BoxFit.contain,
                 ),
                 const SizedBox(height: 12),
                 ElevatedButton(
