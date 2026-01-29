@@ -152,7 +152,7 @@ class _AdminShellState extends State<AdminShell> {
     final isMobile = Responsive.isMobile(context);
 
     return Scaffold(
-      backgroundColor: AppColors.background,
+      backgroundColor: const Color(0xFF1A1A2E),
       drawer: isMobile ? const Drawer(child: AdminSidebar()) : null,
       appBar: isMobile
           ? AppBar(
@@ -161,21 +161,39 @@ class _AdminShellState extends State<AdminShell> {
               title: const Text('Admin', style: TextStyle(fontSize: 16)),
             )
           : null,
-      body: Row(
-        children: [
-          if (!isMobile) const AdminSidebar(),
-          Expanded(
-            child: Column(
+      body: Padding(
+        padding: isMobile
+            ? EdgeInsets.zero
+            : const EdgeInsets.only(left: 12, top: 12, bottom: 12, right: 12),
+        child: ClipRRect(
+          borderRadius: isMobile
+              ? BorderRadius.zero
+              : BorderRadius.circular(20),
+          child: Container(
+            decoration: BoxDecoration(
+              color: AppColors.background,
+              borderRadius: isMobile
+                  ? BorderRadius.zero
+                  : BorderRadius.circular(20),
+            ),
+            child: Row(
               children: [
-                TopNavBar(
-                  selectedIndex: topNavIndex,
-                  onTap: _onTopNavTap,
+                if (!isMobile) const AdminSidebar(),
+                Expanded(
+                  child: Column(
+                    children: [
+                      TopNavBar(
+                        selectedIndex: topNavIndex,
+                        onTap: _onTopNavTap,
+                      ),
+                      Expanded(child: _buildContent()),
+                    ],
+                  ),
                 ),
-                Expanded(child: _buildContent()),
               ],
             ),
           ),
-        ],
+        ),
       ),
     );
   }

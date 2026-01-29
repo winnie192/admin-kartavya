@@ -12,7 +12,7 @@ class DashboardScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     final isMobile = Responsive.isMobile(context);
     return Scaffold(
-      backgroundColor: AppColors.background,
+      backgroundColor: const Color(0xFF1A1A2E),
       drawer: isMobile ? const Drawer(child: ExamSidebar()) : null,
       appBar: isMobile
           ? AppBar(
@@ -29,9 +29,24 @@ class DashboardScreen extends StatelessWidget {
               ],
             )
           : null,
-      body: Row(
-        children: [
-          if (!isMobile) const ExamSidebar(),
+      body: Padding(
+        padding: isMobile
+            ? EdgeInsets.zero
+            : const EdgeInsets.all(12),
+        child: ClipRRect(
+          borderRadius: isMobile
+              ? BorderRadius.zero
+              : BorderRadius.circular(20),
+          child: Container(
+            decoration: BoxDecoration(
+              color: AppColors.background,
+              borderRadius: isMobile
+                  ? BorderRadius.zero
+                  : BorderRadius.circular(20),
+            ),
+            child: Row(
+              children: [
+                if (!isMobile) const ExamSidebar(),
           Expanded(
             child: Column(
               children: [
@@ -56,7 +71,10 @@ class DashboardScreen extends StatelessWidget {
               ],
             ),
           ),
-        ],
+              ],
+            ),
+          ),
+        ),
       ),
     );
   }

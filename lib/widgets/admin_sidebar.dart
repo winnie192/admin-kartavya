@@ -10,10 +10,6 @@ class AdminSidebar extends StatelessWidget {
       width: 200,
       decoration: const BoxDecoration(
         color: AppColors.darkSidebar,
-        borderRadius: BorderRadius.only(
-          topRight: Radius.circular(20),
-          bottomRight: Radius.circular(20),
-        ),
       ),
       child: Column(
         children: [

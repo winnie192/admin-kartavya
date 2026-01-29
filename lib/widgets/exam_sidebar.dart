@@ -10,10 +10,6 @@ class ExamSidebar extends StatelessWidget {
       width: 220,
       decoration: const BoxDecoration(
         color: AppColors.darkSidebar,
-        borderRadius: BorderRadius.only(
-          topRight: Radius.circular(24),
-          bottomRight: Radius.circular(24),
-        ),
       ),
       child: Column(
         children: [
