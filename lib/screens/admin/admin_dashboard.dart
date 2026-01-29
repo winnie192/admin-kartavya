@@ -229,48 +229,50 @@ class AdminDashboard extends StatelessWidget {
         color: AppColors.lightBlue,
         borderRadius: BorderRadius.circular(12),
       ),
-      child: Row(
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Expanded(
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                const Text('Welcome To',
-                    style: TextStyle(fontSize: 10, color: AppColors.textGrey)),
-                const Text('Exam Creation',
-                    style: TextStyle(
-                        fontSize: 15,
-                        fontWeight: FontWeight.bold,
-                        color: AppColors.textDark)),
-                const SizedBox(height: 6),
-                const Text(
-                  'Ready to assess and empower your learners?\nCreate, assign, and track exams all in one place.\nChoose a method that fits your style — both are just a click away!',
-                  style: TextStyle(fontSize: 9, color: AppColors.textGrey),
-                ),
-                const SizedBox(height: 12),
-                Row(
-                  children: [
-                    _imageOutlinedBtn(
-                        'AI Generated',
-                        'assets/exam_creation/10165944 1.png',
-                        () => Navigator.pushNamed(context, '/exams')),
-                    const SizedBox(width: 6),
-                    _imageOutlinedBtn(
-                        'Create Manually',
-                        'assets/exam_creation/image 1.png',
-                        () => Navigator.pushNamed(context, '/exams')),
+          Row(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Expanded(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: const [
+                    Text('Welcome To',
+                        style:
+                            TextStyle(fontSize: 10, color: AppColors.textGrey)),
+                    Text('Exam Creation',
+                        style: TextStyle(
+                            fontSize: 15,
+                            fontWeight: FontWeight.bold,
+                            color: AppColors.textDark)),
+                    SizedBox(height: 6),
+                    Text(
+                      'Ready to assess and empower your learners?\nCreate, assign, and track exams all in one place.\nChoose a method that fits your style — both are just a click away!',
+                      style: TextStyle(fontSize: 9, color: AppColors.textGrey),
+                    ),
                   ],
                 ),
-              ],
-            ),
+              ),
+              Image.asset(
+                'assets/exam_creation/Create exam img 1.png',
+                width: 90,
+                height: 90,
+                fit: BoxFit.contain,
+              ),
+            ],
           ),
-          const SizedBox(width: 8),
-          Image.asset(
-            'assets/exam_creation/Create exam img 1.png',
-            width: 80,
-            height: 80,
-            fit: BoxFit.contain,
-          ),
+          const SizedBox(height: 12),
+          _imageOutlinedBtn(
+              'AI Generated',
+              'assets/exam_creation/10165944 1.png',
+              () => Navigator.pushNamed(context, '/exams')),
+          const SizedBox(height: 6),
+          _imageOutlinedBtn(
+              'Create Manually',
+              'assets/exam_creation/image 1.png',
+              () => Navigator.pushNamed(context, '/exams')),
         ],
       ),
     );
@@ -280,21 +282,23 @@ class AdminDashboard extends StatelessWidget {
       String label, String assetPath, VoidCallback onTap) {
     return InkWell(
       onTap: onTap,
-      borderRadius: BorderRadius.circular(8),
+      borderRadius: BorderRadius.circular(10),
       child: Container(
-        padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 8),
+        padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
         decoration: BoxDecoration(
-          border: Border.all(color: AppColors.primaryBlue.withValues(alpha: 0.3)),
-          borderRadius: BorderRadius.circular(8),
+          border:
+              Border.all(color: AppColors.primaryBlue.withValues(alpha: 0.2)),
+          borderRadius: BorderRadius.circular(10),
           color: Colors.white,
         ),
-        child: Column(
+        child: Row(
+          mainAxisSize: MainAxisSize.min,
           children: [
-            Image.asset(assetPath, width: 50, height: 50, fit: BoxFit.contain),
-            const SizedBox(height: 4),
+            Image.asset(assetPath, width: 36, height: 36, fit: BoxFit.contain),
+            const SizedBox(width: 10),
             Text(label,
                 style: const TextStyle(
-                    fontSize: 9,
+                    fontSize: 11,
                     color: AppColors.primaryBlue,
                     fontWeight: FontWeight.w500)),
           ],
