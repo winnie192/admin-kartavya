@@ -16,60 +16,11 @@ class AdminSidebar extends StatelessWidget {
           const SizedBox(height: 24),
           // Kartavya Logo
           Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 20),
-            child: Row(
-              children: [
-                Container(
-                  padding:
-                      const EdgeInsets.symmetric(horizontal: 10, vertical: 8),
-                  decoration: BoxDecoration(
-                    color: Colors.white,
-                    borderRadius: BorderRadius.circular(10),
-                  ),
-                  child: RichText(
-                    text: const TextSpan(children: [
-                      TextSpan(
-                        text: 'Karta',
-                        style: TextStyle(
-                          fontWeight: FontWeight.w800,
-                          fontSize: 16,
-                          color: AppColors.black,
-                        ),
-                      ),
-                      TextSpan(
-                        text: 'V',
-                        style: TextStyle(
-                          fontWeight: FontWeight.w800,
-                          fontSize: 16,
-                          color: AppColors.amber,
-                        ),
-                      ),
-                      TextSpan(
-                        text: 'ya',
-                        style: TextStyle(
-                          fontWeight: FontWeight.w800,
-                          fontSize: 16,
-                          color: AppColors.black,
-                        ),
-                      ),
-                    ]),
-                  ),
-                ),
-              ],
-            ),
-          ),
-          const SizedBox(height: 2),
-          Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 24),
-            child: Align(
-              alignment: Alignment.centerLeft,
-              child: Text(
-                'Healtheon Pvt. Ltd.',
-                style: TextStyle(
-                  color: Colors.white.withValues(alpha: 0.5),
-                  fontSize: 9,
-                ),
-              ),
+            padding: const EdgeInsets.symmetric(horizontal: 16),
+            child: Image.asset(
+              'assets/images/kartavya_logo.png',
+              width: 140,
+              fit: BoxFit.contain,
             ),
           ),
           const SizedBox(height: 28),

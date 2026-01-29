@@ -14,67 +14,13 @@ class ExamSidebar extends StatelessWidget {
       child: Column(
         children: [
           const SizedBox(height: 28),
-          // Logo - Kartavya badge
+          // Kartavya Logo
           Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 24),
-            child: Row(
-              children: [
-                Container(
-                  padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 10),
-                  decoration: BoxDecoration(
-                    color: Colors.white,
-                    borderRadius: BorderRadius.circular(12),
-                  ),
-                  child: RichText(
-                    text: const TextSpan(
-                      children: [
-                        TextSpan(
-                          text: 'Karta',
-                          style: TextStyle(
-                            fontWeight: FontWeight.w800,
-                            fontSize: 18,
-                            color: AppColors.black,
-                            letterSpacing: 0.5,
-                          ),
-                        ),
-                        TextSpan(
-                          text: 'V',
-                          style: TextStyle(
-                            fontWeight: FontWeight.w800,
-                            fontSize: 18,
-                            color: Color(0xFFFFC107),
-                            letterSpacing: 0.5,
-                          ),
-                        ),
-                        TextSpan(
-                          text: 'ya',
-                          style: TextStyle(
-                            fontWeight: FontWeight.w800,
-                            fontSize: 18,
-                            color: AppColors.black,
-                            letterSpacing: 0.5,
-                          ),
-                        ),
-                      ],
-                    ),
-                  ),
-                ),
-              ],
-            ),
-          ),
-          const SizedBox(height: 4),
-          Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 28),
-            child: Align(
-              alignment: Alignment.centerLeft,
-              child: Text(
-                'Healtheon Pvt. Ltd.',
-                style: TextStyle(
-                  color: Colors.white.withValues(alpha: 0.5),
-                  fontSize: 10,
-                  fontWeight: FontWeight.w400,
-                ),
-              ),
+            padding: const EdgeInsets.symmetric(horizontal: 20),
+            child: Image.asset(
+              'assets/images/kartavya_logo.png',
+              width: 150,
+              fit: BoxFit.contain,
             ),
           ),
           const SizedBox(height: 36),
