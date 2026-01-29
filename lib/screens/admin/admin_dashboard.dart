@@ -316,8 +316,7 @@ class AdminDashboard extends StatelessWidget {
               'assets/exam_summary/image 12.png'),
           _examSummaryRow(AppColors.amber, 'Upcoming', '09',
               'assets/exam_summary/image 13.png'),
-          const Divider(height: 16),
-          _examSummaryRow(AppColors.textDark, 'Total Exams', '143',
+          _examSummaryRow(const Color(0xFF7C3AED), 'Total Exams', '143',
               'assets/exam_summary/image 15.png'),
         ],
       ),
@@ -327,25 +326,38 @@ class AdminDashboard extends StatelessWidget {
   Widget _examSummaryRow(
       Color color, String label, String value, String assetPath) {
     return Padding(
-      padding: const EdgeInsets.only(bottom: 8),
-      child: Row(
-        children: [
-          Image.asset(assetPath, width: 24, height: 24, fit: BoxFit.contain),
-          const SizedBox(width: 8),
-          Container(
-              width: 8,
-              height: 8,
-              decoration:
-                  BoxDecoration(color: color, shape: BoxShape.circle)),
-          const SizedBox(width: 8),
-          Text(label,
-              style:
-                  const TextStyle(fontSize: 10, color: AppColors.textGrey)),
-          const Spacer(),
-          Text(value,
-              style: const TextStyle(
-                  fontSize: 10, fontWeight: FontWeight.w600)),
-        ],
+      padding: const EdgeInsets.only(bottom: 6),
+      child: Container(
+        padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 8),
+        decoration: BoxDecoration(
+          color: color.withValues(alpha: 0.08),
+          borderRadius: BorderRadius.circular(10),
+          border: Border(left: BorderSide(color: color, width: 3)),
+        ),
+        child: Row(
+          children: [
+            Image.asset(assetPath, width: 28, height: 28, fit: BoxFit.contain),
+            const SizedBox(width: 10),
+            Text(label,
+                style: const TextStyle(
+                    fontSize: 11,
+                    fontWeight: FontWeight.w500,
+                    color: AppColors.textDark)),
+            const Spacer(),
+            Container(
+              padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 4),
+              decoration: BoxDecoration(
+                color: color.withValues(alpha: 0.15),
+                borderRadius: BorderRadius.circular(6),
+              ),
+              child: Text(value,
+                  style: TextStyle(
+                      fontSize: 11,
+                      fontWeight: FontWeight.w700,
+                      color: color)),
+            ),
+          ],
+        ),
       ),
     );
   }
@@ -396,8 +408,8 @@ class AdminDashboard extends StatelessWidget {
           const SizedBox(width: 8),
           Image.asset(
             'assets/create_course/Design community-pana 1.png',
-            width: 80,
-            height: 80,
+            width: 60,
+            height: 60,
             fit: BoxFit.contain,
           ),
         ],
@@ -593,8 +605,8 @@ class AdminDashboard extends StatelessWidget {
               children: [
                 Image.asset(
                   'assets/todo_list/47718914_9170823 1.png',
-                  width: 100,
-                  height: 100,
+                  width: 70,
+                  height: 70,
                   fit: BoxFit.contain,
                 ),
                 const SizedBox(height: 12),
