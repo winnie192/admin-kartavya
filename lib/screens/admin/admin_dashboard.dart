@@ -130,7 +130,7 @@ class AdminDashboard extends StatelessWidget {
               const Spacer(),
               _dotLabel(AppColors.primaryBlue, 'Active'),
               const SizedBox(width: 10),
-              _dotLabel(AppColors.lightGrey, 'Inactive'),
+              _dotLabel(AppColors.red, 'Inactive'),
             ],
           ),
           const SizedBox(height: 14),
@@ -152,27 +152,26 @@ class AdminDashboard extends StatelessWidget {
                                 color: AppColors.primaryBlue)),
                         const SizedBox(height: 2),
                         Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
                           crossAxisAlignment: CrossAxisAlignment.end,
                           children: [
-                            Expanded(
-                              child: Container(
-                                height: 70 * (activeValues[i] / maxVal),
-                                decoration: BoxDecoration(
-                                  color: AppColors.primaryBlue,
-                                  borderRadius: const BorderRadius.vertical(
-                                      top: Radius.circular(3)),
-                                ),
+                            Container(
+                              width: 12,
+                              height: 70 * (activeValues[i] / maxVal),
+                              decoration: BoxDecoration(
+                                color: AppColors.primaryBlue,
+                                borderRadius: const BorderRadius.vertical(
+                                    top: Radius.circular(3)),
                               ),
                             ),
-                            const SizedBox(width: 2),
-                            Expanded(
-                              child: Container(
-                                height: 70 * (inactiveValues[i] / maxVal),
-                                decoration: BoxDecoration(
-                                  color: AppColors.lightGrey,
-                                  borderRadius: const BorderRadius.vertical(
-                                      top: Radius.circular(3)),
-                                ),
+                            const SizedBox(width: 3),
+                            Container(
+                              width: 12,
+                              height: 70 * (inactiveValues[i] / maxVal),
+                              decoration: BoxDecoration(
+                                color: AppColors.red,
+                                borderRadius: const BorderRadius.vertical(
+                                    top: Radius.circular(3)),
                               ),
                             ),
                           ],

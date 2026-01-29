@@ -12,7 +12,7 @@ class DashboardScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     final isMobile = Responsive.isMobile(context);
     return Scaffold(
-      backgroundColor: const Color(0xFF1A1A2E),
+      backgroundColor: const Color(0xFF111111),
       drawer: isMobile ? const Drawer(child: ExamSidebar()) : null,
       appBar: isMobile
           ? AppBar(

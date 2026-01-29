@@ -152,7 +152,7 @@ class _AdminShellState extends State<AdminShell> {
     final isMobile = Responsive.isMobile(context);
 
     return Scaffold(
-      backgroundColor: const Color(0xFF1A1A2E),
+      backgroundColor: const Color(0xFF111111),
       drawer: isMobile ? const Drawer(child: AdminSidebar()) : null,
       appBar: isMobile
           ? AppBar(
