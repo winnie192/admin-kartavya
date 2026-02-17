@@ -1,5 +1,9 @@
 import 'package:flutter/material.dart';
 import '../../utils/app_colors.dart';
+import '../../widgets/edit_access_dialog.dart';
+import '../../widgets/retrain_dialog.dart';
+import '../../widgets/feedback_dialog.dart';
+import '../../widgets/meeting_dialog.dart';
 
 class UserDetailScreen extends StatefulWidget {
   const UserDetailScreen({super.key});
@@ -166,14 +170,47 @@ class _UserDetailScreenState extends State<UserDetailScreen> {
           _buildFieldRow('Client', 'cipla_new_abc_222_345', 'Program', 'cipla_new_abc_222_345'),
           _buildFieldRow('Role Assign', 'Trainee', '', ''),
           const SizedBox(height: 14),
-          OutlinedButton(
-            onPressed: () {},
-            style: OutlinedButton.styleFrom(
-              side: const BorderSide(color: AppColors.primaryBlue),
-              shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(6)),
-              padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
-            ),
-            child: const Text('View Access Details', style: TextStyle(fontSize: 10, color: AppColors.primaryBlue)),
+          Wrap(
+            spacing: 8,
+            runSpacing: 6,
+            children: [
+              OutlinedButton(
+                onPressed: () => showEditAccessDialog(context, 'Ankit Dharmnath Pandey'),
+                style: OutlinedButton.styleFrom(
+                  side: const BorderSide(color: AppColors.primaryBlue),
+                  shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(6)),
+                  padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
+                ),
+                child: const Text('Edit Access', style: TextStyle(fontSize: 10, color: AppColors.primaryBlue)),
+              ),
+              OutlinedButton(
+                onPressed: () => showRetrainDialog(context),
+                style: OutlinedButton.styleFrom(
+                  side: const BorderSide(color: AppColors.amber),
+                  shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(6)),
+                  padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
+                ),
+                child: const Text('Retrain', style: TextStyle(fontSize: 10, color: AppColors.amber)),
+              ),
+              OutlinedButton(
+                onPressed: () => showFeedbackDialog(context),
+                style: OutlinedButton.styleFrom(
+                  side: const BorderSide(color: AppColors.green),
+                  shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(6)),
+                  padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
+                ),
+                child: const Text('Feedback', style: TextStyle(fontSize: 10, color: AppColors.green)),
+              ),
+              OutlinedButton(
+                onPressed: () => showMeetingDialog(context),
+                style: OutlinedButton.styleFrom(
+                  side: const BorderSide(color: AppColors.orange),
+                  shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(6)),
+                  padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
+                ),
+                child: const Text('Schedule Meeting', style: TextStyle(fontSize: 10, color: AppColors.orange)),
+              ),
+            ],
           ),
         ],
       ),

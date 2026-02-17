@@ -92,59 +92,27 @@ class _AdminShellState extends State<AdminShell> {
     }
   }
 
-  String _pathFromSubScreen(String screen) {
-    switch (screen) {
-      case 'Manage User':
-        return '/administration/manage-user';
-      case 'Manage Guest':
-        return '/administration/manage-guest';
-      case 'Manage Course':
-        return '/administration/manage-course';
-      case 'User Detail':
-        return '/administration/user-detail';
-      case 'Guest Detail':
-        return '/administration/guest-detail';
-      case 'Trainee Progress':
-        return '/administration/trainee-progress';
-      case 'Request Received':
-        return '/administration/request-received';
-      case 'Certificates':
-      case 'Manage Certificates':
-        return '/administration/certificates';
-      case 'Exam Settings':
-        return '/administration/exam-settings';
-      case 'Review Manager':
-        return '/administration/review-manager';
-      case 'Task Detail':
-        return '/administration/task-detail';
-      default:
-        return '/administration';
-    }
-  }
-
   void _onTopNavTap(int index) {
-    switch (index) {
-      case 0:
-        Navigator.pushReplacementNamed(context, '/');
-        break;
-      case 1:
-        Navigator.pushReplacementNamed(context, '/administration');
-        break;
-      case 2:
-        Navigator.pushReplacementNamed(context, '/addon-module');
-        break;
-      case 3:
-        Navigator.pushReplacementNamed(context, '/change-role');
-        break;
+    if (index == 3) {
+      Navigator.pushReplacementNamed(context, '/login');
+      return;
     }
+    setState(() {
+      topNavIndex = index;
+      _subScreen = null;
+    });
   }
 
   void _pushSubScreen(String screen) {
-    Navigator.pushNamed(context, _pathFromSubScreen(screen));
+    setState(() {
+      _subScreen = screen;
+    });
   }
 
   void _popScreen() {
-    Navigator.pushReplacementNamed(context, '/administration');
+    setState(() {
+      _subScreen = null;
+    });
   }
 
   @override
@@ -266,21 +234,18 @@ class _AdminShellState extends State<AdminShell> {
         return const ManageCourseScreen();
       case 'Manage User':
         return ManageUserScreen(
-          onUserTap: () =>
-              Navigator.pushNamed(context, '/administration/user-detail'),
+          onUserTap: () => _pushSubScreen('User Detail'),
         );
       case 'Manage Guest':
         return ManageGuestScreen(
-          onGuestTap: () =>
-              Navigator.pushNamed(context, '/administration/guest-detail'),
+          onGuestTap: () => _pushSubScreen('Guest Detail'),
         );
       case 'User Detail':
       case 'Guest Detail':
         return const UserDetailScreen();
       case 'Trainee Progress':
         return TraineeProgressScreen(
-          onTraineeTap: () =>
-              Navigator.pushNamed(context, '/administration/user-detail'),
+          onTraineeTap: () => _pushSubScreen('User Detail'),
         );
       case 'Request Received':
         return const RequestReceivedScreen();

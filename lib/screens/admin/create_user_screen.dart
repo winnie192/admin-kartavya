@@ -12,6 +12,28 @@ class CreateUserScreen extends StatefulWidget {
 }
 
 class _CreateUserScreenState extends State<CreateUserScreen> {
+  bool _showRolePanel = false;
+
+  final Map<String, bool> _roles = {
+    'Program Manager': false,
+    'Admin': false,
+    'Author': false,
+    'Guest': false,
+    'Trainee': true,
+    'Trainer': false,
+    'Guest Trainer': false,
+  };
+
+  static const Map<String, Color> _roleColors = {
+    'Program Manager': AppColors.red,
+    'Admin': AppColors.primaryBlue,
+    'Author': AppColors.amber,
+    'Guest': AppColors.grey,
+    'Trainee': AppColors.green,
+    'Trainer': AppColors.primaryBlue,
+    'Guest Trainer': AppColors.orange,
+  };
+
   @override
   Widget build(BuildContext context) {
     final isMobile = Responsive.isMobile(context);
@@ -40,33 +62,111 @@ class _CreateUserScreenState extends State<CreateUserScreen> {
                   borderRadius: isMobile ? BorderRadius.zero : BorderRadius.circular(16),
                   boxShadow: isMobile ? [] : [BoxShadow(color: AppColors.cardShadow, blurRadius: 8, offset: const Offset(0, 2))],
                 ),
-                child: Column(
+                child: Row(
                   children: [
-                    if (!isMobile)
-                      Padding(
-                        padding: const EdgeInsets.only(top: 12, left: 16, right: 12),
-                        child: Row(
-                          children: [
-                            InkWell(
-                              onTap: () => Navigator.pop(context),
-                              borderRadius: BorderRadius.circular(20),
-                              child: Container(
-                                padding: const EdgeInsets.all(5),
-                                decoration: BoxDecoration(shape: BoxShape.circle, border: Border.all(color: AppColors.borderGrey)),
-                                child: const Icon(Icons.arrow_back, size: 14, color: AppColors.textDark),
+                    Expanded(
+                      child: Column(
+                        children: [
+                          if (!isMobile)
+                            Padding(
+                              padding: const EdgeInsets.only(top: 12, left: 16, right: 12),
+                              child: Row(
+                                children: [
+                                  InkWell(
+                                    onTap: () => Navigator.pop(context),
+                                    borderRadius: BorderRadius.circular(20),
+                                    child: Container(
+                                      padding: const EdgeInsets.all(5),
+                                      decoration: BoxDecoration(shape: BoxShape.circle, border: Border.all(color: AppColors.borderGrey)),
+                                      child: const Icon(Icons.arrow_back, size: 14, color: AppColors.textDark),
+                                    ),
+                                  ),
+                                  const SizedBox(width: 10),
+                                  Text(title, style: const TextStyle(fontSize: 14, fontWeight: FontWeight.w600, color: AppColors.textDark)),
+                                ],
                               ),
                             ),
-                            const SizedBox(width: 10),
-                            Text(title, style: const TextStyle(fontSize: 14, fontWeight: FontWeight.w600, color: AppColors.textDark)),
-                          ],
-                        ),
+                          const Divider(height: 20, color: AppColors.borderGrey),
+                          Expanded(child: _buildForm()),
+                          _buildBottomActions(),
+                        ],
                       ),
-                    const Divider(height: 20, color: AppColors.borderGrey),
-                    Expanded(child: _buildForm()),
-                    _buildBottomActions(),
+                    ),
+                    // Assign Role side panel
+                    if (_showRolePanel && !isMobile) _buildRolePanel(),
                   ],
                 ),
               ),
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+
+  Widget _buildRolePanel() {
+    return Container(
+      width: 200,
+      decoration: const BoxDecoration(
+        border: Border(left: BorderSide(color: AppColors.borderGrey)),
+      ),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Padding(
+            padding: const EdgeInsets.all(12),
+            child: Row(
+              children: [
+                const Text('Assign Role', style: TextStyle(fontSize: 12, fontWeight: FontWeight.w600, color: AppColors.textDark)),
+                const Spacer(),
+                InkWell(
+                  onTap: () => setState(() => _showRolePanel = false),
+                  child: const Icon(Icons.close, size: 14, color: AppColors.textGrey),
+                ),
+              ],
+            ),
+          ),
+          const Divider(height: 1, color: AppColors.borderGrey),
+          Expanded(
+            child: ListView(
+              padding: const EdgeInsets.all(12),
+              children: _roles.entries.map((entry) {
+                final color = _roleColors[entry.key] ?? AppColors.primaryBlue;
+                return Padding(
+                  padding: const EdgeInsets.only(bottom: 6),
+                  child: Row(
+                    children: [
+                      Container(
+                        width: 8, height: 8,
+                        decoration: BoxDecoration(
+                          color: entry.value ? color : AppColors.borderGrey,
+                          shape: BoxShape.circle,
+                        ),
+                      ),
+                      const SizedBox(width: 8),
+                      Expanded(
+                        child: Text(
+                          entry.key,
+                          style: TextStyle(
+                            fontSize: 10,
+                            color: entry.value ? color : AppColors.textGrey,
+                            fontWeight: entry.value ? FontWeight.w600 : FontWeight.normal,
+                          ),
+                        ),
+                      ),
+                      SizedBox(
+                        width: 18, height: 18,
+                        child: Checkbox(
+                          value: entry.value,
+                          onChanged: (v) => setState(() => _roles[entry.key] = v ?? false),
+                          materialTapTargetSize: MaterialTapTargetSize.shrinkWrap,
+                          activeColor: color,
+                        ),
+                      ),
+                    ],
+                  ),
+                );
+              }).toList(),
             ),
           ),
         ],
@@ -80,7 +180,6 @@ class _CreateUserScreenState extends State<CreateUserScreen> {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          // Avatar & name header
           Row(
             children: [
               CircleAvatar(
@@ -92,10 +191,7 @@ class _CreateUserScreenState extends State<CreateUserScreen> {
               Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Text(
-                    widget.isGuest ? 'New Guest' : 'New User',
-                    style: const TextStyle(fontSize: 13, fontWeight: FontWeight.w600, color: AppColors.textDark),
-                  ),
+                  Text(widget.isGuest ? 'New Guest' : 'New User', style: const TextStyle(fontSize: 13, fontWeight: FontWeight.w600, color: AppColors.textDark)),
                   if (widget.isGuest)
                     Container(
                       margin: const EdgeInsets.only(top: 2),
@@ -125,13 +221,16 @@ class _CreateUserScreenState extends State<CreateUserScreen> {
           ],
           const SizedBox(height: 16),
           OutlinedButton(
-            onPressed: () {},
+            onPressed: () => setState(() => _showRolePanel = !_showRolePanel),
             style: OutlinedButton.styleFrom(
               side: const BorderSide(color: AppColors.primaryBlue),
               shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(6)),
               padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
             ),
-            child: const Text('View Access Details', style: TextStyle(fontSize: 10, color: AppColors.primaryBlue)),
+            child: Text(
+              _showRolePanel ? 'Hide Access Details' : 'View Access Details',
+              style: const TextStyle(fontSize: 10, color: AppColors.primaryBlue),
+            ),
           ),
         ],
       ),
@@ -139,27 +238,23 @@ class _CreateUserScreenState extends State<CreateUserScreen> {
   }
 
   Widget _buildFieldRow3(String l1, String l2, String l3) {
-    return Row(
-      children: [
-        Expanded(child: _buildField(l1)),
-        const SizedBox(width: 10),
-        Expanded(child: _buildField(l2)),
-        const SizedBox(width: 10),
-        Expanded(child: _buildField(l3)),
-      ],
-    );
+    return Row(children: [
+      Expanded(child: _buildField(l1)),
+      const SizedBox(width: 10),
+      Expanded(child: _buildField(l2)),
+      const SizedBox(width: 10),
+      Expanded(child: _buildField(l3)),
+    ]);
   }
 
   Widget _buildFieldRow2(String l1, String l2) {
-    return Row(
-      children: [
-        Expanded(child: _buildField(l1)),
-        const SizedBox(width: 10),
-        Expanded(child: _buildField(l2)),
-        const SizedBox(width: 10),
-        const Expanded(child: SizedBox()),
-      ],
-    );
+    return Row(children: [
+      Expanded(child: _buildField(l1)),
+      const SizedBox(width: 10),
+      Expanded(child: _buildField(l2)),
+      const SizedBox(width: 10),
+      const Expanded(child: SizedBox()),
+    ]);
   }
 
   Widget _buildField(String label) {
@@ -169,8 +264,7 @@ class _CreateUserScreenState extends State<CreateUserScreen> {
         Text(label, style: const TextStyle(fontSize: 9, color: AppColors.textGrey)),
         const SizedBox(height: 3),
         Container(
-          width: double.infinity,
-          height: 32,
+          width: double.infinity, height: 32,
           padding: const EdgeInsets.symmetric(horizontal: 8),
           decoration: BoxDecoration(
             color: AppColors.primaryBlue.withValues(alpha: 0.04),
@@ -212,11 +306,9 @@ class _CreateUserScreenState extends State<CreateUserScreen> {
               Navigator.pop(context);
             },
             style: ElevatedButton.styleFrom(
-              backgroundColor: AppColors.primaryBlue,
-              foregroundColor: Colors.white,
+              backgroundColor: AppColors.primaryBlue, foregroundColor: Colors.white,
               shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(6)),
-              padding: const EdgeInsets.symmetric(horizontal: 18, vertical: 8),
-              elevation: 0,
+              padding: const EdgeInsets.symmetric(horizontal: 18, vertical: 8), elevation: 0,
             ),
             child: Text(widget.isGuest ? 'Add Guest' : 'Create', style: const TextStyle(fontSize: 11)),
           ),
